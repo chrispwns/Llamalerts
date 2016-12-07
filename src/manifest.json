@@ -1,0 +1,26 @@
+{
+	"manifest_version": 2,
+
+	"author": "Christopher Naron: www.chrisnaron.pw",
+	"name": "Extension",
+	"description": "Extension",
+	"version": "1.0.4",
+
+	"browser_action": {
+		"default_icon": "Logo.png",
+		"default_popup": "popup.html"
+	},
+	"permissions": [
+		"tabs",
+		"activeTab",
+		"*://*/*"
+	],
+	"background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "content_scripts": [{
+        "matches": ["*://*/*"],
+        "js":      ["scripts.js"]
+    }]
+}
