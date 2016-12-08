@@ -1,19 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-	if(window.name === "true"){
-
-		runThroughReload();
-	} else{
-
-	  	var startButton = document.getElementById("Start");
-		var stopButton = document.getElementById("Stop");
-		Start(startButton);
-		Stop(stopButton);
-	}
-
+  	var startButton = document.getElementById("Start");
+	var stopButton = document.getElementById("Stop");
+	Start(startButton);
+	Stop(stopButton);
 	
-
-  	
 }, false);
 
 /**
@@ -23,9 +14,12 @@ document.addEventListener('DOMContentLoaded', function() {
 function Start(startButton) {
 	startButton.addEventListener('click', function() {
 
+		chrome.browserAction.setIcon({path: "active_logo.png"});
+
 		chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
 
 				chrome.tabs.sendMessage(tabs[0].id, {
+
 					from: 'background',
 					subject: 'startScript',
 				})
@@ -41,6 +35,8 @@ function Stop(stopButton){
 	
 	stopButton.addEventListener('click', function() {
 		
+		chrome.browserAction.setIcon({path: "logo.png"});
+
 		chrome.tabs.query( { active: true, currentWindow: true}, function(tabs) {
 
 			chrome.tabs.sendMessage(tabs[0].id, {
