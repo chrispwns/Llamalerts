@@ -3,17 +3,19 @@
 
 	"author": "Christopher Naron ",
 	"name": "Llamalerts",
-	"description": "Checks for \"Give Llama Badges\" in the background, while you do other things.",
-	"version": "1.0",
+	"description": "Checks the Deviantart Badges page and lets you know when you have trade offers.",
+	"version": "1.0.1",
 
 	"browser_action": {
-		"128": "128_logo.png",
-		"64": "64_logo.png",
-		"32": "active_logo.png",
-		"16": "Logo.png",
+		
 		"default_popup": "popup.html",
 		"default_icon": "Logo.png"
 	},
+	"icons": { 
+		"16": "Logo.png",
+        "32": "active_logo.png",
+        "64": "64_logo.png"
+    },
 	"permissions": [
 		"tabs",
 		"activeTab",
