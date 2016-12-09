@@ -1,22 +1,30 @@
 document.addEventListener('DOMContentLoaded', function() {
 
-  	var startButton = document.getElementById("Start");
-	var stopButton = document.getElementById("Stop");
-	Start(startButton);
-	Stop(stopButton);
+  	var toggle = document.getElementById("toggle-button");
+	startOrStop(toggle);
 	
 }, false);
 
-/**
-	Listens for the start button and sends a message to the active script
-	once it has been clicked.
-*/
-function Start(startButton) {
-	startButton.addEventListener('click', function() {
 
-		chrome.browserAction.setIcon({path: "active_logo.png"});
 
-		chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+function startOrStop(toggle) {
+
+		// intial css if already running.
+		initialCss(toggle);
+
+		// listen for button click.
+	toggle.addEventListener('click', function() {
+
+		// if the extension is not currently running.
+		if( localStorage.getItem("running") === null || localStorage.getItem("running") == "false" ){
+
+			console.log("starting extension.") // debug
+			// change the css.
+			sliderCssOn(toggle);
+			// change extension icon
+			chrome.browserAction.setIcon( {path: "active_logo.png"} );
+			// start extension on current tab.
+			chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
 
 				chrome.tabs.sendMessage(tabs[0].id, {
 
@@ -24,26 +32,54 @@ function Start(startButton) {
 					subject: 'startScript',
 				})
 			})		
-		}, false);
-};
+			// set running to true.
+			localStorage.setItem("running", "true");
+		}
+		else if ( localStorage.getItem("running") === "true" ) {
 
-/**
-	Listens for stop button and sends message to active script once it's been
-	clicked signaling the end of the contant reload/injection.
-*/
-function Stop(stopButton){
-	
-	stopButton.addEventListener('click', function() {
-		
-		chrome.browserAction.setIcon({path: "logo.png"});
+			console.log("stoping extension") // debug
+			// change the css
+			slideCssOff(toggle);
+			//change extension icon
+			chrome.browserAction.setIcon( {path: "logo.png"} );
+			// stop the extension on current tab
+			chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
 
-		chrome.tabs.query( { active: true, currentWindow: true}, function(tabs) {
+				chrome.tabs.sendMessage(tabs[0].id, {
 
-			chrome.tabs.sendMessage(tabs[0].id, {
+					from: 'background',
+					subject: 'stopScript',
+				})
+			})		
+			// set running to false
+			localStorage.setItem("running", false);
 
-				from: 'background',
-				subject: 'stopScript',
-			})
-		});
-	}, false);
-};
+		}
+	})
+}
+
+function sliderCssOn(toggle) {
+
+	slider = document.getElementById('slider');
+	slider.style.left = "23px";
+	slider.style.backgroundColor = "#526167"
+	toggle.style.backgroundColor = "#05CC47";
+}
+
+function slideCssOff(toggle){
+
+	slider = document.getElementById('slider');
+	slider.style.left = "2px";
+	slider.style.backgroundColor = "#475C4D"
+	toggle.style.backgroundColor = "#7E9180";
+}
+
+function initialCss(toggle) {
+
+	if ( localStorage.getItem("running") === "true" ){
+		sliderCssOn(toggle);
+	} 
+	else if (localStorage.getItem("running") === "false") {
+		slideCssOff(toggle);
+	}
+}
