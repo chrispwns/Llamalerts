@@ -18,7 +18,8 @@ function startOrStop(toggle) {
 		// if the extension is not currently running.
 		if( localStorage.getItem("running") === null || localStorage.getItem("running") == "false" ){
 
-			console.log("starting extension.") // debug
+			var refreshTime = getRefreshTime(); // user input time.
+			//console.log("starting extension.") // debug
 			// change the css.
 			sliderCssOn(toggle);
 			// change extension icon
@@ -30,6 +31,7 @@ function startOrStop(toggle) {
 
 					from: 'background',
 					subject: 'startScript',
+					interval: refreshTime
 				})
 			})		
 			// set running to true.
@@ -82,4 +84,23 @@ function initialCss(toggle) {
 	else if (localStorage.getItem("running") === "false") {
 		slideCssOff(toggle);
 	}
+}
+
+function getRefreshTime() {
+
+	inputTime = document.getElementById("time").value;
+
+	if( inputTime <= 5 || inputTime === null || inputTime === "" ) { // default values
+
+		localStorage.setItem('refreshTime', 5000)
+	} else {
+		localStorage.setItem('refreshTime', inputTime);
+	}
+
+	formToInt = parseInt( localStorage.getItem('refreshTime') ); // localStorage saves as string. get a usable value.
+
+	formToInt *= 1000; // second to millisecond conversion.
+
+	return formToInt;
+
 }
