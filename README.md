@@ -36,10 +36,6 @@ Essentially what Llamalerts does is allow you to load the Deviantart Badges page
 
 ## Contributing
 
-***Submitting Code***
-
-   * If you decide you want to contribute to Llamalerts fork the *dev* branch and clone it locally. Once you've come up with changes that you think are ready to be merged, submit a pull request to the dev branch.
-
 ***Reporting Issues or Requesting Features***
 
    * If you find any bugs or other issues feel free to make a post in issues so that it can be addressed.
