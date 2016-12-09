@@ -6,8 +6,10 @@ reloadPersist();
 	reloadPersist. 
 */
 chrome.runtime.onMessage.addListener( function (msg, sender) {
+
 	if( ( msg.from === "background" ) && ( msg.subject === "startScript" ) ) {
-			
+
+			document.getElementById("badgedisplay").innerHTML = '<h1><b>Reloading in 10 seconds</h1></b>';
 			badgeListener();
 			window.name = "true";
 
@@ -21,6 +23,8 @@ chrome.runtime.onMessage.addListener( function (msg, sender) {
 	} // start listener
 	
 	else if( ( msg.from === "background" ) && (msg.subject === "stopScript" ) ) {
+
+		document.getElementById("badgedisplay").innerHTML = '<h1><b>Stopping</b></h1>';
 		stopListener();
 	} // stop listener
 });
@@ -41,7 +45,7 @@ function badgeListener() {
 			audio.play();
 		}
 		else {
-			console.log('No badges yet'); // added for debugging purposes.
+			//console.log('No badges yet'); // added for debugging purposes.
 		}
 	}
 };

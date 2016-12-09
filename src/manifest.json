@@ -1,13 +1,14 @@
 {
 	"manifest_version": 2,
 
-	"author": "Christopher Naron: www.chrisnaron.pw",
-	"name": "Extension",
-	"description": "Extension",
-	"version": "1.0.4",
+	"author": "Christopher Naron ",
+	"name": "Llamalerts",
+	"description": "Checks for \"Give Llama Badges\" in the background, while you do other things.",
+	"version": "1.0",
 
 	"browser_action": {
 		"default_icon": "Logo.png",
+		"32": "active_logo.png",
 		"default_popup": "popup.html"
 	},
 	"permissions": [
