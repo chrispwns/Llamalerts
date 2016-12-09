@@ -7,48 +7,89 @@
 	<style>
 		body{
 			width: 300px;
-			background-color: #22313F;
+			background-color: #D4DFD0;
+		}
+		#header{
+			position: relative;
+			background-color: #475C4D;
+			width: 110%;
+		}
+		img{
+			margin-bottom: -6px;
+			margin-right: 10%;
 		}
 
 		h1 {
-			color: #E4F1FE;
-			text-align: center;
+			color: #FFFFFF;
+			margin-left: 10%
 		}
 
 		h2 {
-			color: #EF4836;
+			color: #526154;
 			text-align: center;
 		}
 
 		p {
-			padding-top: 10px;
-			color: white;
+			padding-top: 8px;
+			color: #526154;
 		}
 
 		a{
-			color: #AEA8D3;
+			color: #FA5800;
 			text-decoration: none;
 		}
 
-		button{
-			width: 100px;
+		/* rounded box around slider */
+		#toggle-button{
+			position: absolute;
+			width: 50px;
 			height: 25px;
-			font-size: 16px;
+			margin-left: 38%;
+			background-color: #7E9180;
+			border: 1px solid white;
+			border-radius: 15px;
 		}
+
+		/* format the button to become a round toggle */
+		#toggle-button button{
+			display: block; 
+			position: absolute;
+			width: 25px;
+			height: 25px;
+			left: 2;
+			top: 0;
+			cursor: pointer;
+			outline: none;
+			border: none;
+			padding: none;
+			background-color: #475C4D;
+			border-radius: 100%;
+
+		}
+
+		/* Round toggle on state */
+		#toggle-button #on {
+			top: 0;
+			left: 23px;
+			background-color: #475C4D
+		}
+
 
 	</style>
 	
 	<body>
-		<h1> Llamalerts </h1>
+		<div id="header">
+			<h1> <img src="Llama Header.png"> Llamalerts </h1>
+		</div>
 
-		<h2> Press Start to begin. </h2>
+		<h2> Toggle to begin! </h2>
 
-		<div style="text-align: center">
-			<button id="Start">Start</button>
-			<button id="Stop">Stop</button>
+		<!-- Create a toggle switch from a button. --> 
+		<div id="toggle-button" style="text-align: center">
+			<button id="slider"></button>
 		</div>
 
 		<br> <br>
-		<p> for information on Llamalerts, go <a href="https://github.com/chrispwns/Llamalerts"> here </a> </p>
+		<p> for information on Llamalerts, or to submit a feature request/bug go to the official <a href="https://github.com/chrispwns/Llamalerts"> Github </a> </p>
 	</body>
 </html>

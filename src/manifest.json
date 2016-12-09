@@ -7,9 +7,12 @@
 	"version": "1.0",
 
 	"browser_action": {
-		"default_icon": "Logo.png",
+		"128": "128_logo.png",
+		"64": "64_logo.png",
 		"32": "active_logo.png",
-		"default_popup": "popup.html"
+		"16": "Logo.png",
+		"default_popup": "popup.html",
+		"default_icon": "Logo.png"
 	},
 	"permissions": [
 		"tabs",

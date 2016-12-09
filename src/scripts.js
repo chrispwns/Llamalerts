@@ -9,6 +9,8 @@ chrome.runtime.onMessage.addListener( function (msg, sender) {
 
 	if( ( msg.from === "background" ) && ( msg.subject === "startScript" ) ) {
 
+		console.log("start message recieved");
+
 			document.getElementById("badgedisplay").innerHTML = '<h1><b>Reloading in 10 seconds</h1></b>';
 			badgeListener();
 			window.name = "true";
@@ -24,6 +26,7 @@ chrome.runtime.onMessage.addListener( function (msg, sender) {
 	
 	else if( ( msg.from === "background" ) && (msg.subject === "stopScript" ) ) {
 
+		console.log("stopping");
 		document.getElementById("badgedisplay").innerHTML = '<h1><b>Stopping</b></h1>';
 		stopListener();
 	} // stop listener
