@@ -13,6 +13,8 @@ chrome.runtime.onMessage.addListener( function (msg, sender) {
 			badgeListener();
 			window.name = "true";
 
+			localStorage.setItem('refreshTime', msg.interval); // store in local for constant interval.
+
 			setInterval( function(){
 
 				location.reload();
@@ -74,6 +76,6 @@ function reloadPersist() {
 
 				location.reload();
 				
-			},10000);
+			},parseInt(localStorage.getItem('refreshTime')));
 	}
 };

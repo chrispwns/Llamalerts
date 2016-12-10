@@ -31,7 +31,7 @@ function startOrStop(toggle) {
 
 					from: 'background',
 					subject: 'startScript',
-					interval: refreshTime
+					interval: refreshTime,
 				})
 			})		
 			// set running to true.
