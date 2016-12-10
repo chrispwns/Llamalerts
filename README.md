@@ -12,11 +12,13 @@ Essentially what Llamalerts does is allow you to load the Deviantart Badges page
 
 2. Click the extension to the right of the url bar. It will be a black icon with a white L.
 
-3. Click on the toggle switch to begin looking for llama badges.
+3. Input how often the page should reload in seconds.
 
-4. Go do something else.
+4. Click on the toggle switch to begin looking for llama badges.
 
-5. When you no longer want to run the extension **go back to the Deviantart Badges page** and click the toggle switch again.
+5. Go do something else.
+
+6. When you no longer want to run the extension **go back to the Deviantart Badges page** and click the toggle switch again.
    - in its current state the extension is active across all pages, so it's important you go back to the DA badges.
 
 
